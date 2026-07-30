@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+
+  { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#pet-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg#pet {
+  width: 90%;
+  height: 90%;
+  transition: transform 0.3s ease;
+}
+
+#bubble {
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.95);
+  color: #333;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#bubble.show {
+  opacity: 1;
+}
+
+#bef-opt-info {
+  display: block;
+}
+
+`.happy-text {
+  display: block; }
+</style>
+</head>
+<body>
+<div id="pet-container">
+
+  <svg id="pet" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- 亓体 -->
+    <ellipse cx="100" cy="140" rx="45" ry="40" fill="#F4A460"/>
+    <!-- 臹子 -->
+    <ellipse cx="100" cy="145" rx="25" ry="25" fill="#FFE4B5"/>
+
+    <!-- 巴丛-->
+    <g id="left-ear">
+      <polygon points="62,70 50,25 78,55" fill="#F4A460" stroke="#D2691E" stroke-width="1.5"/>
+      <polygon points="65,65 55,32 75,55" fill="#FFB6C1"/>
+    </g>
+
+    <!-- 叴伛-->
+    <g id="right-ear">
+      <polygon points="138,70 150,25 122,55" fill="#F4A460" stroke="#D2691E" stroke-width="1.5"/>
+      <polygon points="135,65 145,32 125,55" fill="#FFB6C1"/>
+    </g>
+
+    <!-- 丈-->
+    <ellipse cx="100" cy="82" rx="38" ry="32" fill="#F4A460"/>
+    <ellipse cx="100" cy="88" rx="22" ry="18" fill="#FFE4B5"/>
+
+    <!-- 針纠-->
+    <ellipse class="blush" cx="76" cy="90" rx="7" ry="4" fill="#FF9999"/>
+    <ellipse class="blush" cx="124" cy="90" rx="7" ry="4" fill="#FF9999"/>
+
+    <!-- 巴石（正常 -->
+    <g class="eye-open">
+      <ellipse cx="82" cy="78" rx="6" ry="7" fill="white"/>
+      <circle cx="83" cy="79" r="3.5" fill="#333"/>
+      <circle cx="85" cy="77.5" r="1.5" fill="white"/>
+    </g>
+    <g class="eye-open">
+      <ellipse cx="118" cy="78" rx="6" ry="7" fill="white"/>
+      <circle cx="117" cy="79" r="3.5" fill="#333"/>
+      <circle cx="119" cy="77.5" r="1.5" fill="white"/>
+    </g>
+
+    <!-- 开心矷 > _ < -->
+    <g class="eye-happy">
+      <path d="M76,80 Q82,73 88,80" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M112,80 Q118,73 124,80" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+
+    <!-- 矉觉反狗本影右�m -->
+     <script>
+function setMood(mood) {
+  document.getElementById('pet').className = mood;
+}
+function showBubble(text) {
+  var b = document.getElementById('bubble');
+  b.textContent = text;
+  b.classList.add('show');
+  setTimeout(() => b.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
