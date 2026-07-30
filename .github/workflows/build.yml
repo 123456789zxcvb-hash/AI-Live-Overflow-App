@@ -7,8 +7,9 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
-jobs:  
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -28,13 +29,13 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.gradle/caches
-          key: $gradle-cache
+          key: $ranner.os}-gradle-HashFiles
 
-      - name: Build APK      
+      - name: Build APK
         run: chmod +x ./gradlew && ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: deskpet-android-apk.apk
+          name: deskpet-android-apk
           path: app/build/outputs/apk/debug/app-debug.apk
